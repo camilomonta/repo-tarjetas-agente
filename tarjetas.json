@@ -1,0 +1,17 @@
+{
+  "Lina": {
+    "verde": 0,
+    "amarilla": 2,
+    "roja": 0
+  },
+  "Diego": {
+    "verde": 0,
+    "amarilla": 0,
+    "roja": 1
+  },
+  "Camilo": {
+    "verde": 1,
+    "amarilla": 0,
+    "roja": 0
+  }
+}
