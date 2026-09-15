@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: agente
+      POSTGRES_PASSWORD: agente_pass
+      POSTGRES_DB: tarjetas_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    ports:
+      - "5001:5001"
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+      DB_NAME: tarjetas_db
+      DB_USER: agente
+      DB_PASSWORD: agente_pass
+    depends_on:
+      - db
+
+volumes:
+  db_data:

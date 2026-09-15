@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template_string
-from agente import graph, cargar_tarjetas
+from agente import graph, obtener_todas_las_tarjetas
 from langchain_core.messages import HumanMessage
 
 app = Flask(__name__)
@@ -41,8 +41,9 @@ def index():
         lines = [f"{m.type}: {m.content}" for m in result["messages"]]
         respuesta = "\n".join(lines)
 
-    tarjetas_actuales = cargar_tarjetas()
+    tarjetas_actuales = obtener_todas_las_tarjetas()
     return render_template_string(FORM_HTML, respuesta=respuesta, tarjetas=tarjetas_actuales)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5001)
+EOF
